@@ -36,15 +36,15 @@ const MessageContainer = styled.div`
   /* scroll-behavior: smooth; */
 `
 
-// const MoreMessage = styled.div`
-//   color: #7289da;
-//   flex-basis: 32px;
-//   border-radius: 3px;
-//   margin: 16px 16px 16px 6px;
-//   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-//   text-align: center;
-//   line-height: 32px;
-// `
+const MoreMessage = styled.div`
+  color: #7289da;
+  flex-basis: 32px;
+  border-radius: 3px;
+  margin: 16px 16px 16px 6px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  text-align: center;
+  line-height: 32px;
+`
 
 const MessageInputMessageContainer = styled.div`
   display: flex;
@@ -165,6 +165,8 @@ function Chat() {
   useEffect(() => {
     if (channelId && !channelState.msgFetched) {
       dispatch(messageFns.fetchMessage(Number(channelId)))
+    } else {
+      if (containerRef.current) moveToBottom(containerRef.current)
     }
   }, [channelId, channelState, dispatch])
 
@@ -215,11 +217,11 @@ function Chat() {
           >
             <Spinner hidden={!channelId || channelState.msgFetched} />
             {/* more msg */}
-            {/* {channelState?.moreMessage ? (
+            {channelState?.moreMessage ? (
               <MoreMessage>加载更多消息</MoreMessage>
             ) : (
               ""
-            )} */}
+            )}
             {channelState.messageIds.length ? (
               <MessageList msgIds={channelState.messageIds} />
             ) : (
