@@ -10,6 +10,7 @@ import {
   PatchUserType,
   StateType as UserStateType,
 } from "../modules/user"
+import { actionFns as memberFns } from '../modules/member'
 
 export function* loginFlow() {
   while (true) {
@@ -62,6 +63,7 @@ export function* patchUser() {
     if (response.data.type === 0) {
       const { name, avatar } = response.data.data
       yield put(userFns.patchUserSuccess(name!, avatar))
+      yield put(memberFns.updateMember(userId, name!, avatar))
       message.success("更新成功", 3)
     }
   }
