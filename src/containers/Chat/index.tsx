@@ -78,9 +78,8 @@ const MessageList = ({ msgIds }: { msgIds: number[] }) => {
       {sortedMessage.map((message) => (
         <Message
           key={message.uid}
+          userId={message.owner}
           content={message.content}
-          name="admin"
-          avatar="https://cdn.discordapp.com/avatars/278036884637351936/8c7ebea3b8d97acbda26f6619f9c365e.png?size=128"
           date={message.createdAt}
         />
       ))}
