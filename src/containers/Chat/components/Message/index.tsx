@@ -1,5 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
+import { useSelector } from "react-redux"
+import { createSelector } from "reselect"
+import { RootState } from "../../../../redux/configStore"
 
 const Container = styled.div`
   padding: 2px 48px 10px 72px;
@@ -9,7 +12,7 @@ const Container = styled.div`
   flex-direction: column;
   position: relative;
   &:hover {
-    background-color: rgba(4,4,5,0.07)
+    background-color: rgba(4, 4, 5, 0.07);
   }
 `
 const Header = styled.div`
@@ -40,23 +43,29 @@ const Avatar = styled.img`
 `
 
 type PropsType = {
-  name: string,
-  avatar: string,
-  date: string,
+  userId: number
+  date: string
   content: string
 }
 
-function Message({name, avatar, date, content}:PropsType) {
-  // const processedDate = new Date(date).getTime()
+const selectNameAndAvatar = createSelector(
+  (state: RootState) => state.info.member,
+  (state: RootState, userId: number) => userId,
+  (members, userId) => {
+    const { name, avatar } = members[userId.toString()]
+    return { name, avatar }
+  }
+)
+
+function Message({ userId, date, content }: PropsType) {
+  const { name, avatar } = useSelector((state: RootState) => selectNameAndAvatar(state, userId))
   return (
     <Container>
       <Header>
         <NameSpan>{name}</NameSpan>
         <DateSpan>{date}</DateSpan>
       </Header>
-      <Content>
-        {content}
-      </Content>
+      <Content>{content}</Content>
       <Avatar src={avatar} />
     </Container>
   )
