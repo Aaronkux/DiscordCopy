@@ -43,6 +43,7 @@ function MemberList({ guildId }: PropsType) {
   const memberIds = useSelector((state: RootState) => state.info.guild[guildId].usersUids)
   const members = useSelector((state: RootState) => state.info.member)
   const onlineUsers = useSelector((state: RootState) => state.websocket.onlineUsers[guildId])
+  console.log(onlineUsers ? onlineUsers.includes(memberIds[0]) : 'not exist')
   return (
     <Container>
       {memberIds ? memberIds.map(memberId => {

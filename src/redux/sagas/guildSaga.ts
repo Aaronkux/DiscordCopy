@@ -31,6 +31,8 @@ import {
   ConstantTypes as GlobalConstantTypes,
 } from '../modules/global'
 
+import socket from '../../utils/websocket'
+
 import { message } from 'antd'
 
 export function* initialFetch() {
@@ -90,7 +92,9 @@ export function* createGuild() {
       users.forEach(user => memberData[user.uid.toString()] = user)
       yield put(memberFns.initialMember(memberData))
       yield put(guildFns.updateGuild(guildData))
+      console.log(guildData)
       yield put(topLayerFns.toggleNewOrJoinLayer())
+      socket.emit('baseInfo', userId)
     }
   }
 }
