@@ -85,13 +85,14 @@ const SubmitButton = styled.button`
 
 function NewChannel() {
   const dispatch = useDispatch()
-  const [selection, setSelection] = useState(1)
   const [value, setValue] = useState('')
   const parentIdState = useSelector((state: RootState) => state.topLayerStatus.parentId)
   const parentId = parentIdState ? parentIdState : 0;
   const channelState = useSelector((state: RootState) => state.info.channel)
   const guildId = useSelector((state: RootState) => state.topLayerStatus.guildId)
   const parentType = parentId !== 0 ? channelState[parentId.toString()].channelType : null
+  const initialSelection = parentType === null ? 0 : 1
+  const [selection, setSelection] = useState(initialSelection)
   return (
     <CSSTransition
       in={true}
