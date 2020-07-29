@@ -6,7 +6,6 @@ export enum ConstantTypes {
   FETCH_GUILD = "FETCH_GUILD",
   UPDATE_GUILD = "UPDATE_GUILD",
   ADD_GUILD = "ADD_GUILD",
-  JOIN_GUILD = "JOIN_GUILD",
   DELETE_GUILD = "DELETE_GUILD",
   PATCH_GUILD_START = "PATCH_GUILD_START",
   PATCH_GUILD_SUCCEED = "PATCH_GUILD_SUCCEED",
@@ -32,12 +31,6 @@ export type AddGuild = {
   type: ConstantTypes.ADD_GUILD
   name: string
   file?: File
-}
-
-export type JoinGuild = {
-  type: ConstantTypes.JOIN_GUILD
-  guildId: number
-  slots: number
 }
 
 export type PatchGuild = {
@@ -82,13 +75,6 @@ export const actionFns = {
       type: ConstantTypes.ADD_GUILD,
       name,
       file,
-    }
-  },
-  joinGuild: (guildId: number, slots: number): JoinGuild => {
-    return {
-      type: ConstantTypes.JOIN_GUILD,
-      guildId,
-      slots,
     }
   },
   patchGuild: (guildId: number, name: string, file?: File): PatchGuild => {
