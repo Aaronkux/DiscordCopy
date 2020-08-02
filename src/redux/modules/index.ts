@@ -13,6 +13,7 @@ import { reducer as guild } from './guild'
 import { reducer as channel } from './channel'
 import { reducer as message } from './message'
 import { reducer as member } from './member'
+import { reducer as link } from './link'
 import { reducer as topLayerStatus } from './topLayerStatus'
 import { reducer as websocket } from './websocket'
 import { reducer as scroll } from './scroll'
@@ -21,7 +22,8 @@ const info = combineReducers({
   guild,
   channel,
   message,
-  member
+  member,
+  link
 })
 
 export default combineReducers({

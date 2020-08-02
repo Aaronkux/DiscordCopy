@@ -9,9 +9,10 @@
 import { fork } from "redux-saga/effects"
 import { loginFlow, tokenAuthFlow, patchUser } from "./userSaga"
 import { createGuild, patchGuild, fetchGuild, initialFetch } from "./guildSaga"
-import { fetchMessage,fetchOldMessage, postMessage } from "./messageSaga"
+import { fetchMessage, fetchOldMessage, postMessage } from "./messageSaga"
 import { createChannel } from "./channelSaga"
 import { changeCurrentGuild, changeCurrentChannel } from "./websocketSaga"
+import { createLink, getLink, joinLink } from "./linkSaga"
 export default function* rootSaga() {
   yield fork(initialFetch)
   yield fork(loginFlow)
@@ -26,4 +27,7 @@ export default function* rootSaga() {
   yield fork(changeCurrentGuild)
   yield fork(changeCurrentChannel)
   yield fork(patchUser)
+  yield fork(createLink)
+  yield fork(getLink)
+  yield fork(joinLink)
 }
