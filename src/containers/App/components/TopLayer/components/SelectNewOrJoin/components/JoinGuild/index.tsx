@@ -1,10 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
-import { CSSTransition } from 'react-transition-group';
+import React, { useState } from "react"
+import { useDispatch } from 'react-redux'
+import styled from "styled-components"
+import { CSSTransition } from "react-transition-group"
+import { actionFns as linkFns } from '../../../../../../../../redux/modules/link'
 
 const Container = styled.div`
   &.join-container-appear {
-    transform: translateX(100%)
+    transform: translateX(100%);
   }
 
   &.join-container-appear-active {
@@ -37,7 +39,7 @@ const Simple = styled.p`
 `
 
 const LinkInput = styled.input.attrs({
-  type: 'text'
+  type: "text",
 })`
   display: block;
   margin-left: auto;
@@ -88,10 +90,12 @@ type PropsType = {
 }
 
 function JoinGuild({ handleClick }: PropsType) {
+  const [value, setValue] = useState("")
+  const dispatch = useDispatch()
   return (
     <CSSTransition
       in={true}
-      classNames='join-container'
+      classNames="join-container"
       appear
       timeout={{
         enter: 500,
@@ -101,15 +105,12 @@ function JoinGuild({ handleClick }: PropsType) {
         <Header>加入服务器</Header>
         <Notice>输入如下链接加入频道</Notice>
         <Simple>hTKzmak</Simple>
-        <Simple>https://localhost:3000/hTKzmak</Simple>
-        <LinkInput />
+        <LinkInput value={value} onChange={e=>setValue(e.target.value)} />
         <BottomArea>
-          <ReturnButton onClick={() => handleClick(0)}>
-            返回
-        </ReturnButton>
-          <SubmitButton>
-            加入
-          </SubmitButton>
+          <ReturnButton onClick={() => handleClick(0)}>返回</ReturnButton>
+          <SubmitButton onClick={() => {
+            dispatch(linkFns.joinLink(value))
+          }}>加入</SubmitButton>
         </BottomArea>
       </Container>
     </CSSTransition>
