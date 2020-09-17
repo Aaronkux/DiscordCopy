@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import PointSvg from './point.svg'
+import {ReactComponent as PointSvg} from './point.svg'
 
 const Avatar = styled.div<{ avatar: string }>`
   width: 32px;

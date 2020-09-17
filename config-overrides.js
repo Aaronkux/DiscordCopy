@@ -1,9 +1,7 @@
-const rewireSvgReactLoader = require('react-app-rewire-svg-react-loader');
 const { override, fixBabelImports } = require('customize-cra');
 const rewireReactHotLoader = require('react-app-rewire-hot-loader')
 
 function myOverride(config, env) {
-  config = rewireSvgReactLoader(config, env);
   config = rewireReactHotLoader(config, env);
   config.resolve.alias = {
     ...config.resolve.alias,

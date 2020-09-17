@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react"
 import styled from "styled-components"
 import { useDispatch, useSelector } from "react-redux"
-import { Link, Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 import {
   actionFns as userFns,
   ConstantTypes as UserConstantTypes,
@@ -122,8 +122,9 @@ function Login() {
               登入
             </LoginBtn>
             <RegisterContainer>
-              需要一个账号?
-              <Link to="/register">注册</Link>
+              测试用账户1: admin 123
+              测试用账户1: root 123
+              {/* <Link to="/register">注册</Link> */}
             </RegisterContainer>
           </LoginContainer>
         </Container>

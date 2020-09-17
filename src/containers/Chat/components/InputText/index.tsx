@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { RootState } from '../../../../redux/configStore'
 import { actionFns as messageFns } from '../../../../redux/modules/message'
-import AddFileSvg from '../../../../svg/addFile.svg'
+import {ReactComponent as AddFileSvg} from '../../../../svg/addFile.svg'
 
 const Container = styled.div`
   flex-basis: 68px;

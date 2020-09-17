@@ -2,7 +2,7 @@ import React, { Fragment } from "react"
 import { NavLink, NavLinkProps } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import styled from "styled-components"
-import HashTag from "../../../../svg/hashTag.svg"
+import { ReactComponent as HashTag } from "../../../../svg/hashTag.svg"
 import { actionFns as topLayerFns } from "../../../../redux/modules/topLayerStatus"
 import { actionFns as websocketFns } from "../../../../redux/modules/websocket"
 import { RootState } from "../../../../redux/configStore"
@@ -93,7 +93,9 @@ function Text({
   const usersPositionInGuild = useSelector(
     (state: RootState) => state.websocket.usersPositionInGuild
   )
-  const userIds = usersPositionInGuild[channelIdForWebsocket] ? usersPositionInGuild[channelIdForWebsocket] : []
+  const userIds = usersPositionInGuild[channelIdForWebsocket]
+    ? usersPositionInGuild[channelIdForWebsocket]
+    : []
   const members = useSelector((state: RootState) => state.info.member)
   return (
     <Fragment>

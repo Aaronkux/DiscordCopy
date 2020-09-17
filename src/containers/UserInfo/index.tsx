@@ -5,7 +5,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import {RootState} from '../../redux/configStore'
 import AvatarWithStatus from '../../components/AvatarWithStatus'
 import { actionFns as topLayerFns } from '../../redux/modules/topLayerStatus'
-import SettingSvg from './setting.svg'
+import {ReactComponent as SettingSvg} from './setting.svg'
 
 
 const Container = styled.div`
