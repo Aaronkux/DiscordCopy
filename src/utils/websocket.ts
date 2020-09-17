@@ -14,7 +14,7 @@ import {
   actionFns as scrollFns
 } from '../redux/modules/scroll'
 
-const socket = io("http://localhost:3001/")
+const socket = io("http://www.pay2win.top:3001/")
 socket.on("connect", () => {
   store.dispatch(websocketFns.changeConnectState(true))
   console.log("connected")
