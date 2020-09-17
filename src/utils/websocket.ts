@@ -19,11 +19,11 @@ socket.on("connect", () => {
   store.dispatch(websocketFns.changeConnectState(true))
   console.log("connected")
   socket.on("guildUserOnline", (userIds: string, guildId: number) => {
-    console.log("guildUserOnline", guildId, JSON.parse(userIds))
+    // console.log("guildUserOnline", guildId, JSON.parse(userIds))
     store.dispatch(websocketFns.setOnlineUser(guildId, JSON.parse(userIds)))
   })
   socket.on("usersPositionInGuild", (data: string) => {
-    console.log("usersPositionInGuild", JSON.parse(data))
+    // console.log("usersPositionInGuild", JSON.parse(data))
     store.dispatch(websocketFns.setUsersPosition(JSON.parse(data)))
   })
 

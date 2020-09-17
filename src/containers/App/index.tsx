@@ -1,16 +1,16 @@
-import React, { Fragment, useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import styled from 'styled-components'
-import Sidebar from '../Sidebar'
-import Channel from '../Channel'
-import UserInfo from '../UserInfo'
-import Chat from '../Chat'
-import TopLayer from './components/TopLayer'
-import ContextMenu from './components/ContextMenu'
-import Initializing from '../../components/Initializing'
-import { RootState } from '../../redux/configStore'
-import { ConstantTypes as GlobalConstantTypes } from '../../redux/modules/global'
-import socket from '../../utils/websocket'
+import React, { Fragment, useEffect, useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import styled from "styled-components"
+import Sidebar from "../Sidebar"
+import Channel from "../Channel"
+import UserInfo from "../UserInfo"
+import Chat from "../Chat"
+import TopLayer from "./components/TopLayer"
+import ContextMenu from "./components/ContextMenu"
+import Initializing from "../../components/Initializing"
+import { RootState } from "../../redux/configStore"
+import { ConstantTypes as GlobalConstantTypes } from "../../redux/modules/global"
+import socket from "../../utils/websocket"
 
 const Container = styled.div`
   display: flex;
@@ -35,7 +35,9 @@ const LeftContainer = styled.div`
 
 function App() {
   const isFetching = useSelector((state: RootState) => state.global.isFetching)
-  const isInitialized = useSelector((state: RootState) => state.global.isInitialized)
+  const isInitialized = useSelector(
+    (state: RootState) => state.global.isInitialized
+  )
   const isError = useSelector((state: RootState) => state.global.isError)
   const userId = useSelector((state: RootState) => state.user.uid)
   const dispatch = useDispatch()
@@ -48,17 +50,23 @@ function App() {
 
   //全局禁止监听鼠标右键
   useEffect(() => {
-    window.addEventListener('contextmenu', e => {
+    window.addEventListener("contextmenu", (e) => {
       e.preventDefault()
     })
   }, [])
 
   useEffect(() => {
-    socket.emit('baseInfo', userId)
+    socket.emit("baseInfo", userId)
   }, [userId])
   return (
     <Fragment>
-      {isFetching ? <Initializing /> : isError ? 'error' : !isInitialized ? <Initializing /> :
+      {isFetching ? (
+        <Initializing />
+      ) : isError ? (
+        "error"
+      ) : !isInitialized ? (
+        <Initializing />
+      ) : (
         <Container onClick={() => setHidden(!hidden)}>
           <Sidebar />
           <MainContainer>
@@ -69,7 +77,7 @@ function App() {
             <Chat />
           </MainContainer>
         </Container>
-      }
+      )}
       <TopLayer />
       <ContextMenu />
     </Fragment>

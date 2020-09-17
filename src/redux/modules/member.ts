@@ -9,7 +9,8 @@
 import update from 'immutability-helper'
 
 export enum ConstantTypes {
-  INITIAL_MEMBER = 'INITIAL_MEMBER'
+  INITIAL_MEMBER = 'INITIAL_MEMBER',
+  UPDATE_MEMBER = 'UPDATE_MEMBER'
 }
 
 export type InitialMemberType = {
@@ -17,14 +18,30 @@ export type InitialMemberType = {
   memberData: StateType
 }
 
+export type UpdateMemberType = {
+  type: ConstantTypes.UPDATE_MEMBER,
+  uid: number,
+  name: string,
+  avatar: string
+}
+
 type Actions =
-  InitialMemberType
+  InitialMemberType |
+  UpdateMemberType
 
 export const actionFns = {
   initialMember: (memberData: StateType): InitialMemberType => {
     return {
       type: ConstantTypes.INITIAL_MEMBER,
       memberData
+    }
+  },
+  updateMember: (uid: number, name: string, avatar: string): UpdateMemberType => {
+    return {
+      type: ConstantTypes.UPDATE_MEMBER,
+      uid,
+      name,
+      avatar
     }
   }
 }
@@ -44,6 +61,17 @@ export function reducer(state: StateType = {}, action: Actions) {
     case ConstantTypes.INITIAL_MEMBER:
       return update(state, {
         $merge: action.memberData
+      })
+    case ConstantTypes.UPDATE_MEMBER:
+      return update(state, {
+        [action.uid.toString()]: {
+          name: {
+            $set: action.name
+          },
+          avatar: {
+            $set: action.avatar
+          }
+        }
       })
     default:
       return state

@@ -1,15 +1,15 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import { DndProvider } from 'react-dnd'
-import Backend from 'react-dnd-html5-backend'
-import { ThemeProvider, createGlobalStyle } from 'styled-components'
-import configStore from './redux/configStore'
-import Layout from './containers/Layout'
-import theme from './theme'
-import 'normalize.css';
-import 'antd/dist/antd.css'
+import React from "react"
+import ReactDOM from "react-dom"
+import { BrowserRouter as Router } from "react-router-dom"
+import { Provider } from "react-redux"
+import { DndProvider } from "react-dnd"
+import Backend from "react-dnd-html5-backend"
+import { ThemeProvider, createGlobalStyle } from "styled-components"
+import configStore from "./redux/configStore"
+import Layout from "./containers/Layout"
+import theme from "./theme"
+import "normalize.css"
+import "antd/dist/antd.css"
 // import Test from './test'
 
 export const store = configStore()
@@ -22,6 +22,17 @@ const GlobalStyle = createGlobalStyle`
   .ant-menu-item-selected.ant-menu-item-selected.ant-menu-item-selected, 
   .ant-menu-item-active.ant-menu-item-active.ant-menu-item-active {
     background-color: #4e5d94;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: lightgray;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 5px;
   }
 `
 
@@ -36,9 +47,8 @@ ReactDOM.render(
       </Router>
     </DndProvider>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 )
-
 
 // ReactDOM.render(
 //   <Router>

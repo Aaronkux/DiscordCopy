@@ -36,15 +36,15 @@ const MessageContainer = styled.div`
   /* scroll-behavior: smooth; */
 `
 
-// const MoreMessage = styled.div`
-//   color: #7289da;
-//   flex-basis: 32px;
-//   border-radius: 3px;
-//   margin: 16px 16px 16px 6px;
-//   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-//   text-align: center;
-//   line-height: 32px;
-// `
+const MoreMessage = styled.div`
+  color: #7289da;
+  flex-basis: 32px;
+  border-radius: 3px;
+  margin: 16px 16px 16px 6px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  text-align: center;
+  line-height: 32px;
+`
 
 const MessageInputMessageContainer = styled.div`
   display: flex;
@@ -78,9 +78,8 @@ const MessageList = ({ msgIds }: { msgIds: number[] }) => {
       {sortedMessage.map((message) => (
         <Message
           key={message.uid}
+          userId={message.owner}
           content={message.content}
-          name="admin"
-          avatar="https://cdn.discordapp.com/avatars/278036884637351936/8c7ebea3b8d97acbda26f6619f9c365e.png?size=128"
           date={message.createdAt}
         />
       ))}
@@ -165,6 +164,8 @@ function Chat() {
   useEffect(() => {
     if (channelId && !channelState.msgFetched) {
       dispatch(messageFns.fetchMessage(Number(channelId)))
+    } else {
+      if (containerRef.current) moveToBottom(containerRef.current)
     }
   }, [channelId, channelState, dispatch])
 
@@ -215,11 +216,11 @@ function Chat() {
           >
             <Spinner hidden={!channelId || channelState.msgFetched} />
             {/* more msg */}
-            {/* {channelState?.moreMessage ? (
+            {channelState?.moreMessage ? (
               <MoreMessage>加载更多消息</MoreMessage>
             ) : (
               ""
-            )} */}
+            )}
             {channelState.messageIds.length ? (
               <MessageList msgIds={channelState.messageIds} />
             ) : (

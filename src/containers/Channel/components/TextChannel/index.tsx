@@ -94,7 +94,6 @@ function Text({
     (state: RootState) => state.websocket.usersPositionInGuild
   )
   const userIds = usersPositionInGuild[channelIdForWebsocket] ? usersPositionInGuild[channelIdForWebsocket] : []
-  console.log(usersPositionInGuild, usersPositionInGuild[channelIdForWebsocket])
   const members = useSelector((state: RootState) => state.info.member)
   return (
     <Fragment>
