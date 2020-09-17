@@ -63,7 +63,7 @@
     "@types/redux-logger": "^3.0.7",
     "@types/socket.io-client": "^1.4.33",
     "@types/styled-components": "^5.1.0",
-    "babel-plugin-import": "^1.13.0",
-    "react-app-rewire-svg-react-loader": "github:codebandits/react-app-rewire-svg-react-loader"
-  }
+    "babel-plugin-import": "^1.13.0"
+  },
+  "proxy": "http://localhost:3001"
 }

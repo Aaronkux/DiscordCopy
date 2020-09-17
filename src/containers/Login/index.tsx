@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react"
 import styled from "styled-components"
 import { useDispatch, useSelector } from "react-redux"
-import { Link, Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 import {
   actionFns as userFns,
   ConstantTypes as UserConstantTypes,

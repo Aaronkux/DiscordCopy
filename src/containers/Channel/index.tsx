@@ -11,8 +11,8 @@ import { actionFns as guildFns } from "../../redux/modules/guild"
 import { actionFns as topLayerFns } from "../../redux/modules/topLayerStatus"
 import NewLink from "./components/NewLink"
 
-import SettingSvg from "../../svg/setting.svg"
-import AddLinkSvg from "../../svg/addLink.svg"
+import {ReactComponent as SettingSvg} from "../../svg/setting.svg"
+import {ReactComponent as AddLinkSvg} from "../../svg/addLink.svg"
 
 const Container = styled.div`
   flex-grow: 1;

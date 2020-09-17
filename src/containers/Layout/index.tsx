@@ -15,7 +15,7 @@ function Layout() {
   return (
     <React.Fragment>
       <Switch>
-        <Route path='/' render={() => <Redirect to={{ pathname: '/login' }} />}></Route>
+        <Route path='/' exact render={() => <Redirect to={{ pathname: '/login' }} />}></Route>
         <Route path='/login' component={Login}></Route>
         {/* <Route path='/register' component={Register}></Route> */}
         {isValid ?

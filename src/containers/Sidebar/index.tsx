@@ -6,8 +6,8 @@ import { RootState } from "../../redux/configStore"
 import { actionFns as topLayerFns } from "../../redux/modules/topLayerStatus"
 import { actionFns as websocketFns } from "../../redux/modules/websocket"
 import NavButton from "./components/NavButton"
-import PlusSvg from "../../svg/plus.svg"
-import HomeSvg from "../../svg/home.svg"
+import {ReactComponent as PlusSvg} from "../../svg/plus.svg"
+import {ReactComponent as HomeSvg} from "../../svg/home.svg"
 
 const SideBar = styled.aside`
   flex-basis: 72px;

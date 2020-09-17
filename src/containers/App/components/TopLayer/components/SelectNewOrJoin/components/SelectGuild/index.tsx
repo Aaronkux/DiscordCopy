@@ -2,8 +2,8 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { CSSTransition } from 'react-transition-group';
 
-import AddSvg from './add.svg'
-import JoinSvg from './join.svg'
+import {ReactComponent as AddSvg} from './add.svg'
+import {ReactComponent as JoinSvg} from './join.svg'
 
 const Container = styled.div`
   &.select-container-appear {
