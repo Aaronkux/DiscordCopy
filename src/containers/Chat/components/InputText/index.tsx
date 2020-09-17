@@ -29,7 +29,9 @@ const AddFile = styled.div`
 
 const TextArea = styled.input.attrs({
   type: 'text',
-  placeholder: 'send msg to channel'
+  placeholder: 'send msg to channel',
+  maxlength: 50,
+  size: 50,
 })`
   border: none;
   flex-grow: 1;
@@ -57,7 +59,10 @@ function InputText({ channelId, setAutoScroll }: PropsType) {
         </AddFile>
         <TextArea
           value={value}
-          onChange={e => setValue(e.target.value)}
+          onChange={e => {
+            if (!(e.target.value.length > 250))
+              setValue(e.target.value)
+          }}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           onKeyUp={isFocused ? (e) => {
