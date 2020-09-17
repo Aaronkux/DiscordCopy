@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux'
 import { hot } from 'react-hot-loader/root'
 // import WebSocket from '../WebSocket'
 import Login from '../Login'
-import Register from '../Register'
+// import Register from '../Register'
 import App from '../App'
 import NotFind from '../../components/NotFind'
-import Index from '../../components/Index'
+// import Index from '../../components/Index'
 import { RootState } from '../../redux/configStore'
 
 function Layout() {
@@ -15,9 +15,9 @@ function Layout() {
   return (
     <React.Fragment>
       <Switch>
-        <Route path='/' exact component={Index}></Route>
+        <Route path='/' render={() => <Redirect to={{ pathname: '/login' }} />}></Route>
         <Route path='/login' component={Login}></Route>
-        <Route path='/register' component={Register}></Route>
+        {/* <Route path='/register' component={Register}></Route> */}
         {isValid ?
           <Route path='/app' component={App} /> :
           <Route path='/app' render={() => <Redirect to={{ pathname: '/login' }} />} />

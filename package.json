@@ -65,6 +65,5 @@
     "@types/styled-components": "^5.1.0",
     "babel-plugin-import": "^1.13.0",
     "react-app-rewire-svg-react-loader": "github:codebandits/react-app-rewire-svg-react-loader"
-  },
-  "proxy": "http://localhost:3001"
+  }
 }

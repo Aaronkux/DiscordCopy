@@ -122,8 +122,9 @@ function Login() {
               登入
             </LoginBtn>
             <RegisterContainer>
-              需要一个账号?
-              <Link to="/register">注册</Link>
+              测试用账户1: admin 123
+              测试用账户1: root 123
+              {/* <Link to="/register">注册</Link> */}
             </RegisterContainer>
           </LoginContainer>
         </Container>
