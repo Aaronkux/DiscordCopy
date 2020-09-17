@@ -1,7 +1,8 @@
 # 仿discord界面基本功能实现
 
 ## demo链接
-[Demo](http://www.pay2win.top:3000)
+[Demo](http://www.pay2win.top:3000)  
+
 [后端地址](https://github.com/Aaronkux/DiscordCopyServer)
 
 ## 技术选型
