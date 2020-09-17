@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import ToggleSvg from '../../../../svg/toggle.svg'
+import {ReactComponent as ToggleSvg} from '../../../../svg/toggle.svg'
 import { useDispatch } from 'react-redux'
 import { actionFns as topLayerFns } from '../../../../redux/modules/topLayerStatus'
 
