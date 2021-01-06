@@ -9,7 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "@types/react-transition-group": "^4.4.0",
     "antd": "^3.26.15",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "customize-cra": "^0.9.1",
     "immutability-helper": "^3.0.2",
     "normalize.css": "^8.0.1",
